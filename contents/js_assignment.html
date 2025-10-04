@@ -4,22 +4,22 @@
 <head>
     <title>JS - Assignment</title>
     <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    #todoList {
-      list-style-type: none;
-      padding: 0;
-    }
-    #todoList li {
-      margin: 5px 0;
-      font-size: 16px;
-    }
-    .completed {
-      text-decoration: line-through;
-      color: gray;
-    }
-  </style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #todoList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #todoList li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,29 +28,65 @@
     
     <h1>Assignment</h1>
 
-    <h3>Create the simple to-do list with UI and functions below
-    </h3>
+    <h3>Create the simple to-do list with UI and functions below</h3>
     <img src="./../images/assignment-todo.png">
-    </p>
-    <ul>
-        <li>One input text for user to input the todo information (task)
-        </li>
-        <li>'Add' button: to add new item with text from input. Once new item added, clear input text.
-        </li>
-        <li>Once checkbox mark as checked, the detail of to-do item will be strikethrough
-        </li>
-        <li>
-            'Clear all todos' button: to clear all todo items from list
-        </li>
-    </ul>
 
+    <ul>
+        <li>One input text for user to input the todo information (task)</li>
+        <li>'Add' button: to add new item with text from input. Once new item added, clear input text.</li>
+        <li>Once checkbox mark as checked, the detail of to-do item will be strikethrough</li>
+        <li>'Clear all todos' button: to clear all todo items from list</li>
+    </ul>
 
     <h3>Your solution for assignment</h3>
     
     <input id="txtTask" type="text" placeholder="Enter new task"/>
-     <input id="btnAdd" type="button" value="Add"/>
-     <input id="btnresetTable" type="button" value="Clear all todos"/>
+    <input id="btnAdd" type="button" value="Add"/>
+    <input id="btnresetTable" type="button" value="Clear all todos"/>
+
+    <ul id="todoList"></ul>
+
+<script>
+  const txtTask = document.getElementById("txtTask");
+  const btnAdd = document.getElementById("btnAdd");
+  const btnReset = document.getElementById("btnresetTable");
+  const todoList = document.getElementById("todoList");
+
+  function addTask() {
+    const taskText = txtTask.value.trim();
+    if (taskText === "") return;
+
+    const li = document.createElement("li");
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+
+    const span = document.createElement("span");
+    span.textContent = " " + taskText;
+    
+    checkbox.addEventListener("change", () => {
+      span.classList.toggle("completed", checkbox.checked);
+    });
+
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    todoList.appendChild(li);
+
+    txtTask.value = ""; // clear ช่องกรอก
+  }
+
+  btnAdd.addEventListener("click", addTask);
+
+  txtTask.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      addTask();
+    }
+  });
+
+  btnReset.addEventListener("click", () => {
+    todoList.innerHTML = "";
+  });
+</script>
 
 </body>
-
 </html>
