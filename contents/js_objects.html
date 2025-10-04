@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS - Objects</title>
+    <style>
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+            color: #0c0b0b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button onclick="window.history.back();">Back</button>
+    <p>Objects in JS</p>
+    <ul>
+        <li>An object is a collection of key-value pairs (properties)</li>
+        <li>Properties can store data (strings, numbers, arrays, other objects) or functions (methods)</li>
+        <li>Objects help organize related data together</li>
+    </ul>
+
+    <pre><code>const person = {
+    name: "Alice",
+    age: 25,
+    greet: function() {
+    console.log("Hello, my name is " + this.name);
+    }
+};
+
+console.log(person.name); // Alice
+person.greet();           // Hello, my name is Alice</code></pre>
+
+</body>
+
+</html>

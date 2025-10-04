@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS - Document Object Model (DOM)</title>
+</head>
+
+<body>
+
+    <button onclick="window.history.back();">Back</button>
+    <h1>Document Object Model (DOM)</h1>
+    <p>
+    <ul>
+        <li>W3C Standard</li>
+        <li>the standard for accessing documents</li>
+        <li>W3C DOM standard can be separated into 3 different part
+            <ul>
+                <li>Core DOM - standard model for all document types</li>
+                <li>XML DOM - standard model for XML documents</li>
+                <li>HTML DOM - standard model for HTML documents</li>
+            </ul>
+        </li>
+    </ul>
+    "The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts
+    to dynamically access and update the content, structure, and style of a document."
+    </p>
+
+    <h2>What is the HTML DOM?</h2>
+    <p>
+        The standard object model and programming interface for HTML. It defines
+        <img src="./../images/dom-tree.png" width="800" title="HTML DOM Tree" alt="DOM Tree">
+    <ul>
+        <li>
+            The structure of the document (as a tree).
+        </li>
+        <li>
+            The methods to access and manipulate elements.
+        </li>
+        <li>
+            The properties of each element (like .innerHTML, .value, .style, etc.).
+        </li>
+        <li>
+            The document is the root
+        </li>
+        <li>
+            HTML tags are branches
+        </li>
+        <li>
+            Attributes are the leaves
+        </li>
+    </ul>
+    </p>
+    <p>
+        In other words: it is the standard for how to get,
+        change, add, or delete HTML elements.
+    </p>
+    <h2>
+        With HTML DOM, you can use JS to
+    </h2>
+    <ul>
+        <li>Change content (document.getElementById("id").innerHTML = 'Hello';)</li>
+        <li>Change style (elenment.style.color = 'red';)</li>
+        <li>add or remove elements</li>
+        <li>React to events (like clicks, keypresses, etc.)</li>
+    </ul>
+
+    <h2>
+        DOM Programming Interface
+    </h2>
+    <p id="demo_change_txt">
+        This sentence will be changed, once you click on 'Click Me'.
+    </p>
+    <button onclick="alert(document.getElementById('demo_change_txt').innerHTML);">Show Me the Value</button>
+    <button onclick="document.getElementById('demo_change_txt').innerHTML='The sentence has been changed.';">Click
+        Me</button>
+    <button
+        onclick="document.getElementById('demo_change_txt').innerHTML='This sentence will be changed, once you click on \'Click Me\'.';">Reset</button>
+    <p>
+        From above example,
+    </p>
+    <ul>
+        <li>
+            use id (id='demo_change_txt') to find an HTML element
+        </li>
+        <li>
+            accessing an HTML element by getElementById
+        </li>
+        <li>
+            use innerHTML to get/set the content of HTML element
+        </li>
+        <li>
+            DOM = the concept of representing documents as objects in a tree structure.
+        </li>
+        <li>
+            HTML DOM = the browser’s implementation of the DOM specifically for HTML, with objects, properties, and
+            methods you can use in JavaScript.
+        </li>
+        <li>
+            All HTML elements are defined as object.
+
+            <ul>
+                <li>Property: value that you get or set of HTML element</li>
+                <li>Method: action you can do with HTML element</li>
+            </ul>
+        </li>
+        <li>
+            Programming Interface is the properties and methods of each object.
+        </li>
+    </ul>
+
+    <h2>
+        HTML DOM Document Object
+    </h2>
+    <p>
+        To access any element in HTML page, always start with accessing the document object.
+    </p>
+    <p>
+        To Find HTML elements
+    </p>
+    <ul>
+        <li>
+            document.getElementById(id): find element by element id
+        </li>
+
+        <li>
+            document.getElementsByTagName(name): find elements by element tag name
+            <button onclick="alert(document.getElementsByTagName('ul').length);">count of ul tags</button>
+        </li>
+
+        <li>
+            document.getElementsByClassName(name): find elements by element class name
+            <button onclick="alert(document.getElementsByClassName('myButton').length);">count of myButton
+                class</button>
+        </li>
+    </ul>
+
+
+    <p>
+        To change HTML Element
+    </p>
+    <ul>
+        <li>
+            element.innerHTML: change the innerHTML of an element
+        </li>
+
+        <li>
+            element.attribute: change the attribute value of html element
+            <button id="btnChangeColor" style="color:red;"
+                onclick="document.getElementById('btnChangeColor').style.color='green';">change attribute</button>
+        </li>
+
+        <li>
+            element.setAttribute(attribute, value): change the attribute value of html element
+            <button id="btnChangeColorByMethod" style="color:red;"
+                onclick="document.getElementById('btnChangeColorByMethod').setAttribute('style', 'color:blue;');">change
+                attribute</button>
+        </li>
+    </ul>
+
+
+
+    <p>
+        To add and delete elements
+    </p>
+    <ul>
+        <li>
+            document.creteElement(element)
+        </li>
+        <li>
+            document.removeElement(element)
+        </li>
+        <li>
+            document.appendChild(element)
+        </li>
+        <li>
+            document.replaceChild(new, old)
+        </li>
+    </ul>
+
+
+    <p>
+        To add events handlers
+    </p>
+    <ul>
+        <li>
+            document.getElementById(id).onclick = function(){code}
+        </li>
+        <li>
+            document.getElementById(id).onchange = function(){code}
+        </li>
+
+        <div onmouseover="this.innerHTML=';p';" onmouseout="this.innerHTML='mouse over me';"
+            onclick="document.writeln(Date());" style="background-color: lightblue; width: 150px; text-align: center;">
+            mouse over me
+        </div>
+    </ul>
+
+    <p>
+    <ul>
+    </ul>
+    </p>
+
+
+</body>
+
+</html>
