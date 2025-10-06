@@ -2,15 +2,13 @@
 <html>
 
 <head>
-    <meta>
+    <meta charset="UTF-8">
     <title>JS - Exercise</title>
     <style>
         table {
             border-collapse: collapse;
             width: 400px;
-            /* Fixed table width */
             table-layout: fixed;
-            /* Important: forces fixed column width */
         }
 
         th,
@@ -19,11 +17,8 @@
             padding: 8px;
             text-align: left;
             overflow: hidden;
-            /* Hide overflow text */
             text-overflow: ellipsis;
-            /* Add "..." when text too long */
             white-space: nowrap;
-            /* Prevent line break */
         }
     </style>
 </head>
@@ -33,56 +28,73 @@
     <button onclick="window.history.back();">Back</button>
     <h1>Exercise</h1>
 
-    <h3>Create an UI with functions as below
-    </h3>
-    <img src="./../images/exercise_01.png">
-    </p>
+    <h3>Create an UI with functions as below</h3>
     <ul>
-        <li>'Add': to add new input first name and last name as new record in table
-        </li>
-        <li>'Reset input': to clear values in 2 input texts
-        </li>
-        <li>'Reset table': to clear data rows in table
-        </li>
+        <li>'Add': to add new input first name and last name as new record in table</li>
+        <li>'Reset input': to clear values in 2 input texts</li>
+        <li>'Reset table': to clear data rows in table</li>
     </ul>
-
-    </p>
 
     <h2>Your solution for exercise</h2>
 
-    <input id="txtFirstname" type="text" placeholder="Enter First name"/>
-    <input id="txtLastname" type="text" placeholder="Enter Last name"/>
-    <input id="btnAdd" type="button" value="Add"/>
-    <input id="btnresetInput" type="button" value="Reset Input" onclick="resetInput()"/>
-    <input id="btnresetTable" type="button" value="Reset Table"/>
+    <input id="txtFirstname" type="text" placeholder="Enter First name" />
+    <input id="txtLastname" type="text" placeholder="Enter Last name" />
+    <input id="btnAdd" type="button" value="Add" onclick="addRow()" />
+    <input id="btnresetInput" type="button" value="Reset Input" onclick="resetInput()" />
+    <input id="btnresetTable" type="button" value="Reset Table" onclick="resetTable()" />
 
-    <table>
-        <head>
+    <br><br>
+
+    <table id="tblData">
+        <thead>
             <tr>
-                <td>First name</td>
-                <td>Last name</td>
+                <th>First name</th>
+                <th>Last name</th>
             </tr>
-        </head>
-        <body>
+        </thead>
+        <tbody>
             <tr>
                 <td>John</td>
                 <td>Smith</td>
             </tr>
-        </body>
+            <tr>
+                <td>Jo</td>
+                <td>Bola</td>
+            </tr>
+        </tbody>
     </table>
 
-<script>
-    function resetInput(){
-        document.getElementById('txtFirstname',).value='';
-        document.getElementById('txtLastname',).value='';
-    }
-    function add(){
-        let firstname = document.getElementById('txtFirstname').value;
-        let lastname = document.getElementById('txtLastname').value;
-    }
+    <script>
+        function resetInput() {
+            document.getElementById('txtFirstname').value = '';
+            document.getElementById('txtLastname').value = '';
+        }
 
-</script>
+        function addRow() {
+            let firstname = document.getElementById('txtFirstname').value.trim();
+            let lastname = document.getElementById('txtLastname').value.trim();
+
+            if (firstname === '' || lastname === '') {
+                alert('Please enter both first name and last name.');
+                return;
+            }
+
+            let tableBody = document.getElementById('tblData').getElementsByTagName('tbody')[0];
+            let newRow = tableBody.insertRow();
+
+            let cell1 = newRow.insertCell(0);
+            let cell2 = newRow.insertCell(1);
+            cell1.textContent = firstname;
+            cell2.textContent = lastname;
+
+            resetInput();
+        }
+
+        function resetTable() {
+            let tableBody = document.getElementById('tblData').getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = '';
+        }
+    </script>
 
 </body>
-
 </html>
